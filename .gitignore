@@ -134,3 +134,4 @@ todo.txt
 # Database
 *.db
 .db
+data/raw/data.db

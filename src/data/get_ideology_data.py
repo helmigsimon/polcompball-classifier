@@ -165,7 +165,7 @@ def combine_same_ideologies(balls):
     combined_balls = []
 
     for name, balls_ in multiple_balls.items():
-        kwargs = {attr: None for attr in Ideology.__fields__}
+        kwargs = {attr: None for attr in Ideology._meta.columns.keys()}
         for ball in balls_:
             for attr in kwargs.keys():
                 value = getattr(ball, attr)
