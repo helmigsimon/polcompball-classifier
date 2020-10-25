@@ -130,3 +130,7 @@ dmypy.json
 
 # Miscellaneous
 todo.txt
+
+# Database
+*.db
+.db

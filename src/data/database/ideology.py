@@ -1,10 +1,12 @@
 from .base import Base
-from .database import engine
 from sqlalchemy import Column, Integer, String, Boolean
-from sqlalchemy.exc import OperationalError
 
 
 class Ideology(Base):
+    """
+    Ideology Model for SQL Database
+    """
+
     __tablename__ = "ideologies"
     __fields__ = (
         "id",
@@ -30,12 +32,3 @@ class Ideology(Base):
 
     def __init__(self, *args, **kwargs):
         super(Ideology, self).__init__(*args, **kwargs)
-
-
-try:
-    # Creates tables
-    Base.metadata.create_all(bind=engine)
-except OperationalError:
-    pass
-except Exception:
-    raise
