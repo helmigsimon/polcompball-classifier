@@ -68,6 +68,29 @@ class Submission(BaseModel):
     upvote_ratio = FloatField(null=False)
     url = CharField(null=False)
 
+    @database.connection_context()
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
+    @classmethod
+    @database.connection_context()
+    def create(cls, *args, **kwargs):
+        return super().create(*args, **kwargs)
+
+    @classmethod
+    @database.connection_context()
+    def delete(cls, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
+    @database.connection_context()
+    def delete_instance(self, *args, **kwargs):
+        return super().delete_instance(*args, **kwargs)
+
+    @classmethod
+    @database.connection_context()
+    def select(cls, *args, **kwargs):
+        return super().select(*args, **kwargs)
+
 
 class Comment(BaseModel):
     class Meta:
@@ -75,11 +98,33 @@ class Comment(BaseModel):
 
     submission = ForeignKeyField(Submission, backref="comments")
     author = CharField(null=False)
-    is_submitter = BooleanField(null=False)
     created_utc = DateTimeField(null=False)
     body = CharField(null=False)
     permalink = CharField(null=False)
     score = FloatField(null=False)
+
+    @database.connection_context()
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
+    @classmethod
+    @database.connection_context()
+    def create(cls, *args, **kwargs):
+        return super().create(*args, **kwargs)
+
+    @classmethod
+    @database.connection_context()
+    def delete(cls, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
+    @database.connection_context()
+    def delete_instance(self, *args, **kwargs):
+        return super().delete_instance(*args, **kwargs)
+
+    @classmethod
+    @database.connection_context()
+    def select(cls, *args, **kwargs):
+        return super().select(*args, **kwargs)
 
 
 if __name__ == "__main__":

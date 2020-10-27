@@ -135,3 +135,5 @@ todo.txt
 *.db
 .db
 data/raw/data.db
+
+*.DS_STORE

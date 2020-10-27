@@ -3,17 +3,27 @@ import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+import src.data.database as db
 
 
 @click.command()
 @click.argument("input_filepath", type=click.Path(exists=True))
 @click.argument("output_filepath", type=click.Path())
-def main(input_filepath, output_filepath):
+def main(output_filepath):
     """Runs data processing scripts to turn raw data from (../raw) into
     cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info("making final data set from raw data")
+    logger.info("making data set from raw data")
+
+    comments = db.Comment.select()
+    ideologies = db.Ideology.select()
+
+    # Put all comments into a pandas DataFrame
+
+    # Get labels from comments
+
+    # Delete comments with no label
 
 
 if __name__ == "__main__":
